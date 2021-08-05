@@ -1,32 +1,33 @@
 import { types } from './actions'
 
 const initialState = {
-  spinners: {},
+  version: 'v1',
+  spinner: false,
 }
 
-export default (appState = initialState, { type, payload }) => {
+function reducer(appState = initialState, { type, payload }) {
   switch (type) {
-    case types.SHOW:
+    case types.CHANGE_VERSION:
       return {
         ...appState,
-        spinners: {
-          ...appState.spinners,
-          [payload]: true,
-        },
+        version: payload,
       }
-    case types.HIDE:
+    case types.SHOW_SPINNER:
       return {
         ...appState,
-        spinners: {
-          ...appState.spinners,
-          [payload]: false,
-        },
+        spinner: payload,
       }
     default:
       return appState
   }
 }
 
-export function getSpinner(state, id = 'app') {
-  return state.app.spinners[id] || false;
+export function getVersion(state) {
+  return state.app.version;
 }
+
+export function getSpinner(state) {
+  return state.app.spinner;
+}
+
+export default reducer;

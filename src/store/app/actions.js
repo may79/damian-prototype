@@ -1,13 +1,13 @@
 import { createTypes } from 'redux-action-creator'
 
-export const types = createTypes(['SHOW', 'HIDE'], 'SPINNER')
+export const types = createTypes(['CHANGE_VERSION', 'SHOW_SPINNER'], 'app')
 
-export const showSpinner = (id = 'app') => ({
-  type: types.SHOW,
-  payload: id,
+export const changeVersion = (version) => ({
+  type: types.CHANGE_VERSION,
+  payload: version,
 })
 
-export const hideSpinner = (id = 'app') => ({
-  type: types.HIDE,
-  payload: id,
+export const showSpinner = (show) => ({
+  type: types.SHOW_SPINNER,
+  payload: show,
 })

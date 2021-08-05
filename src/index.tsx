@@ -1,12 +1,19 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
+import { Provider } from 'react-redux'
+import buildStore from './store'
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import 'rsuite/dist/styles/rsuite-dark.css';
+import './scss/styles.scss'
+
+const store = buildStore(null, undefined)
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <Provider store={store}>
+      <App />
+    </Provider>
   </React.StrictMode>,
   document.getElementById('root')
 );
